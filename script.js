@@ -1,22 +1,26 @@
 
-let humanScore = 0;
-let computerScore = 0;
+
 
 function getComputerChoice(){
     let choices = ["rock", "paper", "scissors"];
     let computerChoice = choices[Math.floor(Math.random() * choices.length)];
-    return computerChoice.toLowerCase();
+    return computerChoice;
 }
-
+let humanScore = 0;
+let computerScore = 0;
 
 function getHumanChoice(){
- let humanChoice = window.prompt("Enter the choice")
- return humanChoice.toLowerCase();
+ let humanChoice = window.prompt("Enter the choice").toLowerCase();
+ while (humanChoice !== "rock" && humanChoice !== "paper" && humanChoice !== "scissors")
+  humanChoice = prompt("invalid Choice")
+return humanChoice;
 }
 
 function playRound(humanChoice, computerChoice){
+
   if(humanChoice === computerChoice){
-    return "It's a tie!"
+    console.log("It's a tie!")
+    return;
   } 
 
   if( 
@@ -24,10 +28,10 @@ function playRound(humanChoice, computerChoice){
     (humanChoice == "paper" && computerChoice == "rock") ||
     (humanChoice == "scissors" && computerChoice == "paper")
   ){ 
- return "you win"
+ console.log('You win!')
  humanScore++;
 } else{
-    return "you lose"
+    console.log('You lose!')
     computerScore++;
 }
 }
@@ -47,4 +51,4 @@ console.log(`Final Score: You - ${humanScore}, Computer - ${computerScore}`);
         console.log("It's an overall tie!");
     }
 }
-console.log(playGame());
+playGame();
